@@ -1,28 +1,34 @@
 {
-  "name": "Pixi Template",
+  "name": "tank_team",
   "version": "1.0.0",
-  "description": "Webpack + Babel Pixi.js Template",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production",
-    "reinit": "rm -rf .git && git init"
+    "start": "webpack serve --mode=development",
+    "build": "run-s clean build-only",
+    "build-only": "webpack --mode=production",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "pixi.js": "^6.2.0",
+    "pixi-filters": "^4.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@webpack-cli/generators": "^2.4.1",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^9.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.0",
+    "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "^5.2.5",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "babel-loader": "^8.0.4",
-    "copy-webpack-plugin": "^4.6.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
-    "pixi.js": "^4.8.4"
-  }
+  "license": "ISC"
 }
