@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/*', (req, res) => {
+    res.sendFile(__dirname + '/' + req.path);
+});
+
 app.get('/index.js', (req, res) => {
     res.sendFile(__dirname + '/index.js');
 });
