@@ -8,17 +8,17 @@ export class SimpleButton extends Container {
     constructor(screen_width, screen_height) {
         super();
 
-        this.button = Sprite.from("button_pressable.png");
+        this.button = Sprite.from("speed_bg.png");
         this.button.x = screen_width / 2;
         this.button.y = screen_height / 2;
 
-
-        this.dash = Sprite.from("button_not_pressable.png");
-        this.dash.x = screen_width / 2;
-        this.dash.y = screen_height / 2;
-        this.addChild(this.dash);
         this.addChild(this.button);
         this.button.interactive = true;
+        this.button.on("pointerdown", this.some_function, this.button);
+    }
+
+    some_function(e) {
+        console.log("an event!")
     }
 
 
