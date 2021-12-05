@@ -19,6 +19,7 @@ export class SimpleButton extends Container {
     }
 
     some_function(e) {
+        // Example of sending data to server
         socket.emit('update', 'asdf');
     }
 
