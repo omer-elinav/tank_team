@@ -1,5 +1,6 @@
 const Container = PIXI.Container;
 const Sprite = PIXI.Sprite;
+const socket = io();
 
 export class SimpleButton extends Container {
     button;
@@ -18,7 +19,7 @@ export class SimpleButton extends Container {
     }
 
     some_function(e) {
-        console.log("an event!")
+        socket.emit('update', 'asdf');
     }
 
 

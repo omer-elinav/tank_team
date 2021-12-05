@@ -3,6 +3,12 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
+var game_status = {
+    map: "",
+    players: "",
+    events: ""
+};
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
@@ -11,13 +17,11 @@ app.get('/*', (req, res) => {
     res.sendFile(__dirname + '/' + req.path);
 });
 
-app.get('/index.js', (req, res) => {
-    res.sendFile(__dirname + '/index.js');
-});
-
 io.on('connection', (socket) => {
-    socket.on('chat message', msg => {
-    io.emit('chat message', msg);
+    socket.on('update', data => {
+    console.log("hey");
+    game_status = data;
+    io.emit('update', game_status);
     });
 });
 
