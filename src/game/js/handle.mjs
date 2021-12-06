@@ -2,6 +2,9 @@ import {app} from "./app.mjs";
 
 
 const imageTexture = PIXI.Texture.from('assets/ball.png');
+const pullTexture = PIXI.Texture.from('assets/shaft/pull.png');
+// const shaftTexture = PIXI.Texture.from('assets/shaft/shaft.png');
+const shaftTexture = PIXI.Texture.from('assets/shaft/shaft_alpha.png');
 
 imageTexture.baseTexture.resolution = devicePixelRatio;
 imageTexture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
@@ -11,23 +14,25 @@ class Handle {
         this.app = app;
 
         this.original_pos = position;
-        this.step_size = size / 2;
+        this.step_size = size / 2 - 25;
 
         // Create rectangle
-        this.shaft = new PIXI.Graphics();
-
-        this.shaft.beginFill(0x000000);
+        this.shaft = new PIXI.Sprite(shaftTexture);
+        this.shaft.position.set(position.x -5 , position.y - (size/2))
+        this.shaft.width = 10
+        this.shaft.height = size
+        // this.shaft.beginFill(0x000000);
 
         // set the line style to have a width of 5 and set the color to red
         // this.shaft.lineStyle(5, 0x000000);
 
         // draw a rectangle
-        this.shaft.drawRect(position.x -5 , position.y - (size/2), 10, size);
+        // this.shaft.drawRect(position.x -5 , position.y - (size/2), 10, size);
 
 
-        this.sprite = new PIXI.Sprite(imageTexture);
+        this.sprite = new PIXI.Sprite(pullTexture);
         this.sprite.width = 50
-        this.sprite.height = 43
+        this.sprite.height = 50
         this.sprite.interactive = true;
 
         // This button mode will mean the hand cursor appears when you roll over
@@ -39,7 +44,7 @@ class Handle {
         this.sprite.position = position;
 
         // Make it a bit bigger, so it's easier to grab.
-        this.sprite.scale.set(0.1);
+        // this.sprite.scale.set(0.1);
 
         // Setup events for mouse + touch using the pointer events
 
@@ -48,6 +53,7 @@ class Handle {
         this.sprite.pointerup = this.sprite.pointerupoutside = () => this.onDragEnd()
 
         this.app.stage.addChild(this.shaft);
+        this.app.stage.addChild(this.sprite);
 
         this.events = {}
         this.events.up = () => {};

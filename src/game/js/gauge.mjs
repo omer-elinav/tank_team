@@ -1,7 +1,7 @@
 export {Gauge};
 
 const gauge_bg_texture = PIXI.Texture.from('assets/speed/speed_bg2.png');
-const gauge_dial_texture = PIXI.Texture.from('assets/speed/speed_dial.png');
+const gauge_dial_texture = PIXI.Texture.from('assets/speed/dial.png');
 
 
 class Gauge {
@@ -33,9 +33,10 @@ class Gauge {
         gauge_dial.anchor.y = 0.5
         gauge_dial.angle = base_angle;
 
-        console.log(gauge.width)
-        gauge.width = size
-        gauge.height = size
+        gauge_bg.width = size
+        gauge_bg.height = size
+        gauge_dial.width = size
+        gauge_dial.height = size
 
         this.dial = gauge_dial;
 
