@@ -3,7 +3,7 @@ import {SimpleButton} from "./SimpleButton.js";
 const Application = PIXI.Application;
 const socket = io();
 
-var game_date = {
+var game_data = {
     map: [],
     players: [],
     events: []
